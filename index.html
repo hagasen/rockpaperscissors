@@ -5,32 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+   
 </head>
 <body>
+
+    <div class="mainArea">
+        <h1>Rock Paper Scissors Game</h1>
+        <button id="rock">Rock</button>
+        <button id="paper">Paper(no code yet)</button>
+        <button id="scissors">Scissors(no code yet)</button>
+    </div>
+ 
+    <div id="resultArea"></div>
     
-<script>
-
-getComputerChoice();
-
-function getComputerChoice(){
+    <div id="recordArea"></div>
     
-    let computerChoice = Math.floor(Math.random() * 4);
-     
-    if (computerChoice == 0){
-        computerChoice = "rock";
-    }
-    else if (computerChoice == 1){
-        computerChoice = "paper";
-    }
-    else {
-        computerChoice = "scissors";
-    }
 
-    console.log(computerChoice);
-}
-
-
-
-</script>
+    <script src="index.js"></script>
 </body>
 </html>
