@@ -1,50 +1,62 @@
-const varRock = document.getElementById("rock");
-const varPaper = document.getElementById("paper");
-const varScissors = document.querySelector("#scissors");
+const rockBtn = document.getElementById("rock");
+const paperBtn = document.getElementById("paper");
+const scissorsBtn = document.getElementById("scissors");
+const resultArea = document.getElementById("resultArea");
+const recordArea = document.getElementById("recordArea");
+let result = document.createElement("p");
+let userRecord = document.createElement("p");
+let compRecord = document.createElement("p");
+let userWins = 0;
+let compWins = 0;
 
-varRock.addEventListener("click", funcRock);
-varPaper.addEventListener("click", funcPaper);
-varScissors.addEventListener("click", funcScissors);
+rockBtn.onclick = playRock;
 
 
-function funcRock(){
-    generateComputerChoice()
-    if (computerChoice == "paper"){
-        alert("take that L");
+/*paperBtn.addEventListener("click", playPaper)
+scissorsBtn.addEventListener("click", playScissors)*/
+
+
+//rock = 0, paper = 1, scissors = 2
+
+
+function playRock(){
+    let computerChoice = Math.floor(Math.random() * 3);
+    if (computerChoice == 0){ 
+    result.textContent = "It's a tie";
+    resultArea.appendChild(result);
     }
-}
-
-function funcPaper(){
-    generateComputerChoice()
-    if (computerChoice == "paper"){
-        console.log("tie");
-    }
-}
-
-function funcScissors(){
-    generateComputerChoice()
-    if (computerChoice == "paper"){
-        console.log("W");
-    }
-}
-
-
-function generateComputerChoice(){
-
-   computerChoice = Math.floor(Math.random() * 3);
-
-    if (computerChoice == 0){
-    computerChoice = "rock";
-    }
-
     else if (computerChoice == 1){
-    computerChoice = "paper";
+    result.textContent = "Computer chose paper \n You lose."
+    resultArea.appendChild(result);
+        ++compWins;
+        if (compWins == 5){
+            compWins = 0;
+            userWins = 0;
+            alert("Game over. You lose.");
+            
+        }
+    compRecord.textContent = "Computer wins: " + compWins;
+    recordArea.appendChild(compRecord);
+        return (compWins);
     }
-
-    else {
-        computerChoice = "scissors";
+    else{
+    result.textContent = "Computer chose scissors \n You win!";
+    resultArea.appendChild(result);
+        ++userWins;
+        if (userWins == 5){
+            compWins = 0;
+            userWins = 0;
+            alert("Game over. You win!");
+            
+        }
+    userRecord.textContent = "Your wins: " + userWins;
+    recordArea.appendChild(userRecord);
+        return (userWins);
     }
-
-return (computerChoice);
+    
 }
+
+
+
+
 
